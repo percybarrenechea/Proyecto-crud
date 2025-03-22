@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención Bancaria</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Atención Bancaria</h1>
+    </header>
+    <main class="container">
+        <section class="form-section">
+            <h2>Registro de Atención</h2>
+            <form id="formAtencion" class="form-container">
+                <div class="form-group">
+                    <label for="cliente">Nombre del Cliente:</label>
+                    <input type="text" id="cliente" placeholder="Nombre del Cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="tramite">Trámite:</label>
+                    <select id="tramite" required>
+                        <option value="" disabled selected>Seleccionar Trámite</option>
+                        <option value="Depósitos">Depósitos</option>
+                        <option value="Transacciones">Transacciones</option>
+                        <option value="Préstamos">Préstamos</option>
+                        <option value="Cajas de Seguridad">Cajas de Seguridad</option>
+                        <option value="Pagos">Pagos</option>
+                        <option value="Asesorías Financieras">Asesorías Financieras</option>
+                    </select>
+                </div>
+                <div id="dynamicFields" class="dynamic-fields"></div>
+                <div class="form-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select id="estado">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Completado">Completado</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Agregar Atención</button>
+            </form>
+        </section>
+        <section class="table-section">
+            <h2>Lista de Atenciones</h2>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Trámite</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAtenciones"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <div class="modal" id="modalEditar">
+        <div class="modal-content">
+            <h3>Editar Atención</h3>
+            <div class="form-group">
+                <label for="editCliente">Nombre del Cliente:</label>
+                <input type="text" id="editCliente" required>
+            </div>
+            <div class="form-group">
+                <label for="editTramite">Trámite:</label>
+                <select id="editTramite">
+                    <option value="Depósitos">Depósitos</option>
+                    <option value="Transacciones">Transacciones</option>
+                    <option value="Préstamos">Préstamos</option>
+                    <option value="Cajas de Seguridad">Cajas de Seguridad</option>
+                    <option value="Pagos">Pagos</option>
+                    <option value="Asesorías Financieras">Asesorías Financieras</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editFecha">Fecha:</label>
+                <input type="date" id="editFecha" required>
+            </div>
+            <div class="form-group">
+                <label for="editEstado">Estado:</label>
+                <select id="editEstado">
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Completado">Completado</option>
+                </select>
+            </div>
+            <button id="guardarCambios" class="btn-primary">Guardar</button>
+            <button onclick="cerrarModal()" class="btn-secondary">Cancelar</button>
+        </div>
+    </div>
+    <div class="modal" id="modalVer">
+        <div class="modal-content">
+            <h3>Detalles del Trámite</h3>
+            <div id="detalleTramite"></div>
+            <button onclick="cerrarModalVer()" class="btn-secondary">Cerrar</button>
+        </div>
+    </div>
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>
